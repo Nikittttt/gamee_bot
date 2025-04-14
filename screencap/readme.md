@@ -35,6 +35,7 @@ DXGIScreenCap - это высокопроизводительная утилит
 
 Основной сценарий использования - запуск `dxgi_screencap.exe` как подпроцесса из Python и чтение его `stdout`.
 
+```python
 import subprocess
 import struct
 import os
@@ -42,7 +43,6 @@ import os
 # Путь к исполняемому файлу C++
 CPP_CAPTURER_PATH = os.path.join(os.path.dirname(__file__), "dxgi_screencap.exe")
 # Убедитесь, что turbojpeg.dll находится в той же папке или в системном PATH
-
 def start_capture_process(x, y, width, height):
     """Запускает C++ процесс захвата экрана."""
     if not os.path.exists(CPP_CAPTURER_PATH):
@@ -134,3 +134,4 @@ if __name__ == "__main__":
                 print("Process did not terminate gracefully, killing.")
                 capture_process.kill() # Убить, если не завершился
             print("C++ process stopped.")
+```
