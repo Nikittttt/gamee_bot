@@ -7,9 +7,8 @@ import skimage as ski
 
 class Image:
     def __init__(self, frame_jpeg):
-        jpg_as_np = np.frombuffer(frame_jpeg, dtype=np.uint8)
-        self.img = cv2.imdecode(jpg_as_np, flags=1)
-        breakpoint()   # TODO убрать как только выяснится почему у нас не полные изображения или изменится подход к ним
+        self.img = frame_jpeg
+        #breakpoint()   # TODO убрать как только выяснится почему у нас не полные изображения или изменится подход к ним
         self.initial_img = self.img.copy()
         self.gray_img = []
         self.centers = []
@@ -20,7 +19,7 @@ class Image:
         else:
             plt.imsave(path, img)
 
-    def filter_img(self, min_size=1536):
+    def filter_img(self, min_size=2336):
         grey = ski.color.rgb2gray(self.initial_img)
         th = 0.25
 
